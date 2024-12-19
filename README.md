@@ -3,7 +3,7 @@
 | Nama              | NRP                                                  | Tugas |
 |----------------------|--------------------------------------------------------------| ----- |
 | Daffa Rajendra Priyatama | 5027231009 | NAT, GRE Tunnel | 
-| Naufal Syafi' Hakim        | 5027231022 | Routing, DHCP |
+| Naufal Syafi' Hakim        | 5027231022 | Routing, VLSM Tree |
 | RM. Novian Malcolm Bayuputra | 5027231035 | Topologi, DHCP |
 | Dimas Andhika Diputra              | 5027231074 | Subnetting, Config Static IP |
 
