@@ -228,7 +228,7 @@ Router(config)# ip dhcp pool pc
 Router(dhcp-config)# network 10.75.0.0 255.255.255.128
 Router(dhcp-config)# default-router 10.75.0.1
 Router(dhcp-config)# dns-server 10.75.0.1
-Router(config)# ip dhcp excluded-address 10.75.0.1 10.75.0.10
+Router(config)# ip dhcp excluded-address 10.75.0.0 10.75.0.10
 ```
 
 ## NAT
