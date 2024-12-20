@@ -7,15 +7,29 @@
 | RM. Novian Malcolm Bayuputra | 5027231035 | Topologi, DHCP |
 | Dimas Andhika Diputra              | 5027231074 | Subnetting, Config Static IP |
 
+
+Laporan final project ini menjelaskan implementasi dari jaringan komputer yang dirancang menggunakan metode subnetting, routing, konfigurasi NAT, GRE Tunnel, dan lainnya untuk merepresentasikan komunikasi data yang optimal dalam lingkungan jaringan kompleks. Setiap bagian di topologi memiliki peran spesifik, seperti distribusi IP, pengelolaan koneksi antar-segmen jaringan, dan pengamanan data melalui NAT.
+
 ## Topologi
+### Buatlah topologi jaringan yang mencakup gedung utama dengan lima lantai dan cabang yang terhubung melalui VPN di Cisco Packet Tracer. Gunakan perangkat jaringan yang sesuai (misalnya router, switch, dan perangkat lain) untuk membanguntopologi tersebut. (20 poin)
+
+Topologi ini menggambarkan hubungan antar perangkat jaringan (router, switch, dan komputer) yang dihubungkan melalui berbagai interface.
+
 ![Screenshot 2024-12-19 224949](https://github.com/user-attachments/assets/fce1df3c-fba3-4331-8321-314c383d3dd6)
 
 ## Subnetting
+### Lakukan subnetting pada jaringan dan tentukan Subnet Mask, Network ID, Broadcast Address, serta Range IP untuk setiap subnet. Buatlah tabel alokasi subnet untuk setiap departemen berdasarkan jumlah perangkat yang dibutuhkan di masing- masing subnet. Gunakan alamat IP Private sesuai dengan standar yang ada (misalnya 10.0.0.0/8, 172.16.0.0/12, atau 192.168.0.0/16). (15 poin)
+
+Subnetting adalah metode untuk membagi jaringan menjadi beberapa sub-jaringan yang lebih kecil, membantu mengoptimalkan alokasi alamat IP dan meningkatkan efisiensi routing. Spreadsheet di atas menjelaskan pembagian IP berdasarkan VLSM (Variable Length Subnet Mask), memungkinkan setiap subnet memiliki ukuran yang disesuaikan dengan kebutuhan.
+
 https://docs.google.com/spreadsheets/d/1erulimzxzkYmx6gwraKSa-8v8KGgdl_1LfiLL3vuD1k/edit?gid=282142602#gid=282142602
 ![Screenshot 2024-12-19 221755](https://github.com/user-attachments/assets/3e45754e-43a4-41af-b898-815d31cec1bc)
 
 ## Configuration
-Berikut adalah konfigurasi dari tiap node pada topologi
+### Konfigurasi Static IP pada setiap perangkat jaringan di semua departemen, kecuali lantai 2, sesuai dengan pembagian subnetting yang telah dilakukan. Pastikan alamat IP yang diberikan sesuai dengan alokasi subnet yang sudah dibuat. (10 poin)
+### Konfigurasi Static Routing agar perangkat di setiap departemen dapat berkomunikasi lintas subnet. Jangan menggunakan default route untuk menghubungkan subnet - subnet yang ada. Pastikan setiap router pada masing-masing lantai terhubung dengan benar dan dapat melakukan routing antar subnet. (15 poin)
+
+Berikut adalah konfigurasi static IP dab static Routing dari tiap node pada topologi
 ### Router 0
 ```
 interface FastEthernet0/0
@@ -223,6 +237,9 @@ ip route 10.75.2.20 255.255.255.252 10.75.2.25
 ```
 
 ## Konfigurasi DHCP
+### Departemen R&D, Pemasaran, dan Penjualan akan menggunakan DHCP untuk mengalokasikan alamat IP secara dinamis kepada perangkat mereka. Konfigurasikan
+DHCP server pada router dan pastikan perangkat di tiga departemen tersebut mendapatkan IP otomatis sesuai dengan rentang yang telah ditentukan. (15 poin)
+
 ```
 Router(config)# ip dhcp pool pc
 Router(dhcp-config)# network 10.75.0.0 255.255.255.128
@@ -232,6 +249,8 @@ Router(config)# ip dhcp excluded-address 10.75.0.0 10.75.0.10
 ```
 
 ## NAT
+### Perusahaan membutuhkan akses ke internet untuk semua perangkat yang terhubung. Konfigurasikan NAT Overload (PAT) pada router utama untuk memungkinkan perangkat dalam jaringan lokal mengakses internet, misalnya dengan melakukan ping ke 8.8.8.8. (15 poin)
+
 Set IP Inside(fa0/0, fa1/0) and Outside(fa0/1)
 ```
 Router(config)# interface <interface>
@@ -243,6 +262,8 @@ ip nat inside source list 1 interface FastEthernet0/1 overload
 ```
 
 ## GRE Tunnel
+### Hubungkan Gedung Utama ke Cabang menggunakan GRE Tunnel. Konfigurasikan Generic Routing Encapsulation (GRE Tunnel) antara router di gedung utama dan router di cabang untuk membangun koneksi virtual yang aman. Pastikan kedua router dapat saling berkomunikasi melalui GRE Tunnel dan verifikasi konektivitasnya dengan melakukan ping antar router atau perangkat di masing-masing jaringan. (10 poin) 
+
 ### Lantai 1
 ```
 Router(config)# interface Tunnel0
@@ -257,3 +278,6 @@ Router(config-if)# ip address 10.75.2.18 255.255.255.252
 Router(config-if)# tunnel source FastEthernet0/0
 Router(config-if)# tunnel destination 10.75.2.22
 ```
+
+## Untuk video dari demo praktikum kami dapat dilihat pada tautan berikut ini 
+https://drive.google.com/file/d/17de7FnlFtpl0BRO-nYZ2fpyYoF5tOzTj/view?usp=sharing
