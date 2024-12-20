@@ -15,7 +15,7 @@ https://docs.google.com/spreadsheets/d/1erulimzxzkYmx6gwraKSa-8v8KGgdl_1LfiLL3vu
 ![Screenshot 2024-12-19 221755](https://github.com/user-attachments/assets/3e45754e-43a4-41af-b898-815d31cec1bc)
 
 ## Configuration
-
+Berikut adalah konfigurasi dari tiap node pada topologi
 ### Router 0
 ```
 interface FastEthernet0/0
